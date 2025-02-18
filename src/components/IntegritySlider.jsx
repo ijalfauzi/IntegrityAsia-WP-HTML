@@ -1,5 +1,31 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 
+const ResponsiveImage = ({ imagePath, alt, className }) => {
+  // Function to get image path for different sizes
+  const getImagePath = (size) => {
+    return imagePath.replace('.webp', `-${size}.webp`);
+  };
+
+  return (
+    <img
+      src={imagePath}
+      srcSet={`
+        ${getImagePath('400')} 400w,
+        ${getImagePath('800')} 800w,
+        ${getImagePath('1200')} 1200w,
+        ${imagePath} 1600w
+      `}
+      sizes="(max-width: 768px) 400px,
+             (max-width: 1024px) 800px,
+             (max-width: 1440px) 1200px,
+             1600px"
+      alt={alt}
+      loading="lazy"
+      className={className}
+    />
+  );
+};
+
 const IntegritySlider = () => {
   const slides = [
     {
@@ -16,7 +42,7 @@ const IntegritySlider = () => {
         row2: "right"
       },
       bgColor: "rgba(128, 128, 128, 0.9)",
-      animationType: "normal" // row1: left-to-right, row2: right-to-left
+      animationType: "normal"
     },
     {
       image: "/assets/images/slides/slide-2.webp",
@@ -30,7 +56,7 @@ const IntegritySlider = () => {
         row2: "left"
       },
       bgColor: "rgba(0, 0, 0, 0.85)",
-      animationType: "alternate" // row1: right-to-left, row2: left-to-right
+      animationType: "alternate"
     },
     {
       image: "/assets/images/slides/slide-3.webp",
@@ -112,7 +138,7 @@ const IntegritySlider = () => {
 
     return (
       <div className="absolute inset-0 flex items-center">
-        <div className="container mx-auto px-4">
+        <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-[800px] ml-0 lg:ml-24 xl:ml-32">
             {/* Title */}
             <div className={`font-bold mb-3 ${isMobile ? 'text-center' : 'ml-8'}`}>
@@ -188,49 +214,54 @@ const IntegritySlider = () => {
   };
 
   return (
-    <div 
-      className="relative w-full overflow-hidden" 
-      style={{ height: '100vh' }}
-    >
-      {slides.map((slide, index) => (
-        <div
-          key={index}
-          className={`absolute w-full h-full transition-all duration-300 ease-in-out ${
-            index === currentSlide ? "translate-x-0" : 
-            index < currentSlide ? "-translate-x-full" : "translate-x-full"
-          }`}
-        >
-          <img
-            src={slide.image}
-            alt={slide.title}
-            className="w-full h-full object-cover"
-          />
-          <TrapezoidOverlay 
-            slide={slide} 
-            isActive={index === currentSlide}
-          />
-        </div>
-      ))}
+    <div className="relative w-full overflow-hidden bg-gray-900" style={{ height: '100vh' }}>
+      {/* Slides container */}
+      <div className="absolute inset-0">
+        {slides.map((slide, index) => (
+          <div
+            key={index}
+            className={`absolute w-full h-full transition-all duration-300 ease-in-out ${
+              index === currentSlide ? "translate-x-0" : 
+              index < currentSlide ? "-translate-x-full" : "translate-x-full"
+            }`}
+          >
+            <ResponsiveImage
+              imagePath={slide.image}
+              alt={typeof slide.title === 'object' ? `${slide.title.prefix}${slide.title.main}` : slide.title}
+              className="w-full h-full object-cover"
+            />
+            <TrapezoidOverlay 
+              slide={slide} 
+              isActive={index === currentSlide}
+            />
+          </div>
+        ))}
+      </div>
 
-      <button
-        onClick={goToPrevSlide}
-        className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/75 p-2 rounded-full transition-colors z-20 text-white"
-        aria-label="Previous slide"
-      >
-        <svg className="w-4 h-4 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-        </svg>
-      </button>
-      
-      <button
-        onClick={goToNextSlide}
-        className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/75 p-2 rounded-full transition-colors z-20 text-white"
-        aria-label="Next slide"
-      >
-        <svg className="w-4 h-4 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-        </svg>
-      </button>
+      {/* Navigation buttons container */}
+      <div className="absolute inset-0">
+        <div className="relative h-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+          <button
+            onClick={goToPrevSlide}
+            className="absolute left-4 sm:left-6 lg:left-8 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/75 p-2 rounded-full transition-colors z-20 text-white"
+            aria-label="Previous slide"
+          >
+            <svg className="w-4 h-4 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          
+          <button
+            onClick={goToNextSlide}
+            className="absolute right-4 sm:right-6 lg:right-8 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/75 p-2 rounded-full transition-colors z-20 text-white"
+            aria-label="Next slide"
+          >
+            <svg className="w-4 h-4 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
