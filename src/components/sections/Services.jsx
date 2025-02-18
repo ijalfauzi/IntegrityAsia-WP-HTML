@@ -193,7 +193,7 @@ const Services = () => {
 
   return (
     <section className="py-12 sm:py-16 bg-gray-100">
-      <div className="container mx-auto px-4">
+      <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8"> {/* Updated container */}
         {/* Section Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8 sm:mb-12">
           <h2 className="text-xl sm:text-2xl font-bold text-gray-900 border-l-4 border-red-600 pl-4">
@@ -204,7 +204,7 @@ const Services = () => {
             carried out by local experts and supported by advanced technology.
           </p>
         </div>
-
+  
         {/* Service Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
           {services.map((service, index) => (
