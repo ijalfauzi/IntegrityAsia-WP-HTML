@@ -1,6 +1,7 @@
 import Header from './components/layout/Header';
 import IntegritySlider from './components/IntegritySlider';
 import Services from './components/sections/Services';
+import News from './components/sections/News';
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <Header />
       <IntegritySlider />
       <Services />
+      <News />
     </div>
   )
 }
