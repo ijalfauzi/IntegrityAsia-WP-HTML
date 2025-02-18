@@ -1,13 +1,37 @@
 import React from 'react';
 
+const ResponsiveImage = ({ imagePath, alt }) => {
+  const getImagePath = (size) => {
+    return imagePath.replace('.webp', `-${size}.webp`);
+  };
+
+  return (
+    <img
+      src={imagePath}
+      srcSet={`
+        ${getImagePath('400')} 400w,
+        ${getImagePath('800')} 800w,
+        ${imagePath} 1200w
+      `}
+      sizes="(max-width: 768px) 400px,
+             (max-width: 1024px) 800px,
+             1200px"
+      alt={alt}
+      loading="lazy"
+      width={1200}
+      height={750}
+      className="absolute inset-0 w-full h-full object-cover"
+    />
+  );
+};
+
 const ServiceCard = ({ title, image, services }) => (
   <div className="group">
     {/* Image Container */}
     <div className="relative w-full aspect-[16/10] rounded-lg overflow-hidden mb-8">
-      <img 
-        src={image} 
+      <ResponsiveImage 
+        imagePath={image}
         alt={title}
-        className="absolute inset-0 w-full h-full object-cover"
       />
       <div className="absolute inset-0 bg-black/60 transition-colors duration-300"></div>
       
@@ -53,7 +77,7 @@ const ServiceCard = ({ title, image, services }) => (
                          group-hover/link:opacity-100 group-hover/link:scale-100 
                          transition-all duration-300 rounded-lg" />
 
-          {/* Arrow Icon - Slides in on hover */}
+          {/* Arrow Icon */}
           <div className="absolute right-3 sm:right-4 opacity-0 -translate-x-4 transition-all duration-300 
                          group-hover/link:opacity-100 group-hover/link:translate-x-0 text-red-600">
             <svg 
@@ -193,7 +217,7 @@ const Services = () => {
 
   return (
     <section className="py-12 sm:py-16 bg-gray-100">
-      <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8"> {/* Updated container */}
+      <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8 sm:mb-12">
           <h2 className="text-xl sm:text-2xl font-bold text-gray-900 border-l-4 border-red-600 pl-4">

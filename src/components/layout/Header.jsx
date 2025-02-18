@@ -1,6 +1,18 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Search, X, ChevronRight } from 'lucide-react';
 
+const ResponsiveLogo = () => (
+  <img 
+    src="/assets/images/logo.webp"
+    srcSet="/assets/images/logo-small.webp 128w, /assets/images/logo.webp 256w"
+    sizes="(max-width: 768px) 128px, 256px"
+    width={128}
+    height={40}
+    alt="Integrity Asia"
+    className="h-auto w-32 max-w-32"
+  />
+);
+
 const Header = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState(null);
@@ -155,7 +167,6 @@ const Header = () => {
                   );
                 }
 
-                // Handle nested menu (Brand Protection)
                 return (
                   <div
                     key={item.title}
@@ -213,13 +224,9 @@ const Header = () => {
     <header className="relative bg-white shadow-sm" ref={menuRef}>
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Logo */}
+          {/* Logo with optimized image loading */}
           <a href="/" className="flex-shrink-0 py-4">
-            <img 
-              src="/assets/images/logo.webp" 
-              alt="Integrity Asia" 
-              className="h-auto w-32 max-w-32"
-            />
+            <ResponsiveLogo />
           </a>
 
           {/* Navigation */}
