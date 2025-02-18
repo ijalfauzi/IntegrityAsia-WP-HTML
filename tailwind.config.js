@@ -6,6 +6,18 @@ export default {
   ],
   theme: {
     extend: {
+      maxWidth: {
+        'screen-xl': '1280px',
+      },
+      container: {
+        center: true,
+        padding: {
+          DEFAULT: '1rem',
+          sm: '2rem',
+          lg: '4rem',
+          xl: '5rem',
+        },
+      },
       fontFamily: {
         sans: ['Poppins', 'ui-sans-serif', 'system-ui'],
         poppins: ['Poppins', 'sans-serif'],
