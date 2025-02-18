@@ -3,7 +3,7 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 const IntegritySlider = () => {
   const slides = [
     {
-      image: "/assets/images/slides/slide-1.jpg",
+      image: "/assets/images/slides/slide-1.webp",
       title: {
         prefix: "WELCOME TO ",
         main: "INTEGRITY ASIA"
@@ -19,7 +19,7 @@ const IntegritySlider = () => {
       animationType: "normal" // row1: left-to-right, row2: right-to-left
     },
     {
-      image: "/assets/images/slides/slide-2.jpg",
+      image: "/assets/images/slides/slide-2.webp",
       title: "MITIGATION",
       mainText: "Trust our team to handle fraud:",
       subText: "Our investigation and mitigation services keep your business safe",
@@ -33,7 +33,7 @@ const IntegritySlider = () => {
       animationType: "alternate" // row1: right-to-left, row2: left-to-right
     },
     {
-      image: "/assets/images/slides/slide-3.jpg",
+      image: "/assets/images/slides/slide-3.webp",
       title: "DETECTION",
       mainText: "Stay vigilant against fraud:",
       subText: "Our detection services keep your business safe",
@@ -47,7 +47,7 @@ const IntegritySlider = () => {
       animationType: "normal"
     },
     {
-      image: "/assets/images/slides/slide-4.jpg",
+      image: "/assets/images/slides/slide-4.webp",
       title: "PREVENTION",
       mainText: "Prevention is the key to fraud protection:",
       subText: "Trust our team to keep your business safe",

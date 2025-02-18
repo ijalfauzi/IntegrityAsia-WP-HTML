@@ -216,7 +216,7 @@ const Header = () => {
           {/* Logo */}
           <a href="/" className="flex-shrink-0 py-4">
             <img 
-              src="/assets/images/logo.png" 
+              src="/assets/images/logo.webp" 
               alt="Integrity Asia" 
               className="h-auto w-32 max-w-32"
             />

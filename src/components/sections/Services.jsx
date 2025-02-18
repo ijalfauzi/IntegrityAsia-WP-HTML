@@ -80,7 +80,7 @@ const Services = () => {
   const services = [
     {
       title: "PREVENTION",
-      image: "/assets/images/business-investigation.jpg",
+      image: "/assets/images/business-investigation.webp",
       services: [
         {
           name: "Employment Background Screening",
@@ -120,7 +120,7 @@ const Services = () => {
     },
     {
       title: "DETECTION",
-      image: "/assets/images/our-detection.png",
+      image: "/assets/images/our-detection.webp",
       services: [
         {
           name: "Whistleblowing System",
@@ -157,7 +157,7 @@ const Services = () => {
     },
     {
       title: "MITIGATION",
-      image: "/assets/images/governance-compliance.jpg",
+      image: "/assets/images/governance-compliance.webp",
       services: [
         {
           name: "Fraud Investigation",
