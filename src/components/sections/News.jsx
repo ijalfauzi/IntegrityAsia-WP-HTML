@@ -46,21 +46,20 @@ const News = () => {
       category: 'Articles',
       title: 'The eFishery fraud: an Indonesian unicorn entangled in financial reporting fraud',
       excerpt: 'A detailed investigation into financial reporting irregularities at a major Indonesian startup.',
-      image: '/assets/images/news/efishery-fraud.webp',
+      image: '/assets/images/post-1.webp',
       link: '/news/efishery-fraud'
     },
     {
       category: 'Articles',
       title: 'KYC: a step towards minimizing fraud risk in microfinance institutions',
       excerpt: 'Each year in November, the global community marks International Fraud Awareness Week, a...',
-      image: '/assets/images/news/kyc-fraud-risk.webp',
-      link: '/news/kyc-fraud-risk'
+      image: '/assets/images/post-2.webp',
     },
     {
       category: 'Articles',
       title: 'A case for conflict disclosure and due diligence in vendor management',
       excerpt: 'Understanding the importance of transparency and thorough vetting in vendor relationships.',
-      image: '/assets/images/news/conflict-disclosure.webp',
+      image: '/assets/images/post-3.webp',
       link: '/news/conflict-disclosure'
     }
   ];
