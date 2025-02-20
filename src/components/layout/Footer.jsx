@@ -1,18 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Footer = () => {
+  const [videoLoaded, setVideoLoaded] = useState(false);
+  
+  const loadVideo = () => {
+    setVideoLoaded(true);
+  };
+
   return (
     <footer className="bg-[#1B1B1B] text-gray-400 pt-16 pb-8">
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
         {/* Row 1 */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-12">
-          {/* YouTube Video */}
+          {/* Video Placeholder - Only loads YouTube when clicked */}
           <div className="relative bg-black/20 rounded-lg overflow-hidden">
-            <iframe
-              src="https://www.youtube.com/embed/your-video-id"
-              className="w-full aspect-video"
-              allowFullScreen
-            ></iframe>
+            {videoLoaded ? (
+              <iframe
+                src="https://www.youtube.com/embed/your-video-id"
+                className="w-full aspect-video"
+                allowFullScreen
+              ></iframe>
+            ) : (
+              <div 
+                className="w-full aspect-video bg-gray-800 flex items-center justify-center cursor-pointer group"
+                onClick={loadVideo}
+              >
+                <div className="flex flex-col items-center">
+                  <svg className="w-16 h-16 text-red-600 mb-2 group-hover:text-red-500 transition-colors" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M10,15L15.19,12L10,9V15M21.56,7.17C21.69,7.64 21.78,8.27 21.84,9.07C21.91,9.87 21.94,10.56 21.94,11.16L22,12C22,14.19 21.84,15.8 21.56,16.83C21.31,17.73 20.73,18.31 19.83,18.56C19.36,18.69 18.5,18.78 17.18,18.84C15.88,18.91 14.69,18.94 13.59,18.94L12,19C7.81,19 5.2,18.84 4.17,18.56C3.27,18.31 2.69,17.73 2.44,16.83C2.31,16.36 2.22,15.73 2.16,14.93C2.09,14.13 2.06,13.44 2.06,12.84L2,12C2,9.81 2.16,8.2 2.44,7.17C2.69,6.27 3.27,5.69 4.17,5.44C4.64,5.31 5.5,5.22 6.82,5.16C8.12,5.09 9.31,5.06 10.41,5.06L12,5C16.19,5 18.8,5.16 19.83,5.44C20.73,5.69 21.31,6.27 21.56,7.17Z" />
+                  </svg>
+                  <span className="text-gray-300 group-hover:text-white transition-colors">Click to load video</span>
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Headquarters & Associated Companies */}
@@ -79,11 +99,13 @@ const Footer = () => {
                 src="/assets/images/pbsa.webp" 
                 alt="PBSA" 
                 className="w-[100px] h-[100px] object-contain"
+                loading="lazy"
               />
               <img 
                 src="/assets/images/cii.webp" 
                 alt="CII" 
                 className="w-[100px] h-[100px] object-contain"
+                loading="lazy"
               />
             </div>
           </div>
