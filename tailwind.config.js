@@ -61,12 +61,66 @@ export default {
             transform: 'translateX(0)',
             opacity: '1'
           }
+        },
+        // New animations for mobile menu
+        slideInRight: {
+          '0%': {
+            opacity: '0',
+            transform: 'translateX(-15px)'
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateX(0)'
+          }
+        },
+        fadeUp: {
+          '0%': {
+            opacity: '0',
+            transform: 'translateY(10px)'
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateY(0)'
+          }
+        },
+        scaleIn: {
+          '0%': {
+            opacity: '0',
+            transform: 'scale(0.95)'
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'scale(1)'
+          }
+        },
+        // Optional additional animation for menu items
+        pulse: {
+          '0%, 100%': {
+            transform: 'scale(1)'
+          },
+          '50%': {
+            transform: 'scale(0.98)'
+          }
         }
       },
       animation: {
         'slideLeftToRight': 'slideLeftToRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-        'slideRightToLeft': 'slideRightToLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards'
+        'slideRightToLeft': 'slideRightToLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        // New animation classes for mobile menu
+        'slideInRight': 'slideInRight 0.4s ease-out forwards',
+        'fadeUp': 'fadeUp 0.5s ease-out forwards',
+        'scaleIn': 'scaleIn 0.3s ease-out forwards',
+        'pulse': 'pulse 2s ease-in-out infinite'
       },
+      transitionDuration: {
+        '400': '400ms',
+      },
+      scale: {
+        '98': '0.98',
+      },
+      transitionTimingFunction: {
+        'bounce-in': 'cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+      }
     },
   },
   plugins: [],
